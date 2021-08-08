@@ -11,9 +11,7 @@ class Clock {
             let hours = correctValueTime(this.date.getHours())
             let minutes = correctValueTime(this.date.getMinutes())
             let seconds = correctValueTime(this.date.getSeconds())
-            this.time = el.classList.contains('full') ? `${hours}:${minutes}:${seconds}` : `${hours}:${minutes}`
-            el.innerHTML = this.time
-            return this.time
+            el.innerHTML = el.classList.contains('full') ? `${hours}:${minutes}:${seconds}` : `${hours}:${minutes}`
         }
         this.changeFormat = function () {
             el.classList.toggle('full')
@@ -24,4 +22,6 @@ class Clock {
 let time = document.getElementById('time')
 let clock = new Clock(time);
 clock.render()
-setInterval(() => clock.render(), 1000);
+setInterval(() => {
+    clock.render(); console.log(clock)
+}, 1000);
