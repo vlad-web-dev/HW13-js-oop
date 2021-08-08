@@ -22,6 +22,4 @@ class Clock {
 let time = document.getElementById('time')
 let clock = new Clock(time);
 clock.render()
-setInterval(() => {
-    clock.render(); console.log(clock)
-}, 1000);
+setInterval(() => clock.render(), 1000);
