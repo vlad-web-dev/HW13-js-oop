@@ -6,19 +6,18 @@ class Clock {
     constructor(element) {
         this.el = element
         this.el.addEventListener('click', () => this.changeFormat())
+        this.fullDate = true
     }
-}
-
-Clock.prototype.render = function () {
-    this.date = new Date()
-    let hours = correctValueTime(this.date.getHours())
-    let minutes = correctValueTime(this.date.getMinutes())
-    let seconds = correctValueTime(this.date.getSeconds())
-    this.el.innerHTML = this.el.classList.contains('full') ? `${hours}:${minutes}:${seconds}` : `${hours}:${minutes}`
-}
-
-Clock.prototype.changeFormat = function () {
-    this.el.classList.toggle('full')
+    render() {
+        this.date = new Date()
+        let hours = correctValueTime(this.date.getHours())
+        let minutes = correctValueTime(this.date.getMinutes())
+        let seconds = correctValueTime(this.date.getSeconds())
+        this.el.innerHTML = this.fullDate ? `${hours}:${minutes}:${seconds}` : `${hours}:${minutes}`
+    }
+    changeFormat() {
+        this.fullDate = !this.fullDate
+    }
 }
 
 let time = document.getElementById('time')
